@@ -83,11 +83,8 @@ prop_map = {
 
 def check_valid(item):
     k, v = item
-    try:
-        g = prop_map[k].fullmatch(v).groups()
-    except:
-        return False
-    return globals()[k](*g)
+    g = prop_map[k].fullmatch(v)
+    return g is not None and globals()[k](*g.groups())
 
 def check_passport(p):
     return check(p) and all(map(check_valid, p))
