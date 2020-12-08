@@ -24,7 +24,4 @@ groups = reduce(group, data, [[]])
 
 # part 2
 # cardinality of intersection of sets of answers
-def intersect(acc, n):
-    return acc.intersection(n)
-
-print(sum(map(lambda g: len(reduce(intersect, g)), groups)))
+print(sum(map(lambda g: len(reduce(lambda acc, n: acc.intersection(n), g)), groups)))

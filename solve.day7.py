@@ -49,9 +49,9 @@ for k, nodes in data.items():
 def walk_parents(n):
     if len(n.parents) == 0:
         return [n]
-    return [n] + flatten([walk_parents(p) for p in n.parents])
+    return [n] + flatten(walk_parents(p) for p in n.parents)
 
-#containers = flatten([walk_parents(node_map[g]) for g in goldies])
+#containers = flatten(walk_parents(node_map[g]) for g in goldies)
 #print(len(set(containers)))
 
 # part 2
