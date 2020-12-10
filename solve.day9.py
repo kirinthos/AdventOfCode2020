@@ -27,6 +27,7 @@ ans = next(x for x in drop(preamble, window(preamble + 1, data)) if not check(x)
 # i guess i still don't care about processing though...
 def check_invalid(n, l):
     return math.fsum(l) <= n
+
 p = partial(check_invalid, ans)
 l = map(lambda v: drop(v, data), range(0, len(data) - 2))
 solns = next(x for x in map(lambda v: last(take_while_list(p, v)), l) if math.fsum(x) == ans)
