@@ -1,8 +1,21 @@
 
+import math
 from functools import reduce
 
 def prod(l):
     return reduce(lambda a, n: a * n, l)
+
+def add(l1, l2):
+    return map(sum, zip(l1, l2))
+
+def negate(l):
+    return map(lambda v: v * -1, l)
+
+def sub(l1, l2):
+    return map(sum, zip(l1, negate(l2)))
+
+def product(l1, l2):
+    return map(prod, zip(l1, l2))
 
 def partition(l, n):
     for i in range(0, len(l), n):
@@ -16,6 +29,15 @@ def partitionby(p, l):
         else:
             yield a
             a = []
+
+def rotate_around_pt(center, pt, deg):
+    center = list(center)
+    pt = list(pt)
+    r = math.pi * deg / 180.0
+    c, s = math.cos(r), math.sin(r)
+    x, y = pt[0] - center[0], pt[1] - center[1]
+    return center[0] + c * x - s * y, center[1] + s * x + c * y
+
 
 def flatten(l):
     return [item for sublist in l for item in sublist]
