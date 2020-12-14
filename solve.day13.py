@@ -46,7 +46,7 @@ print(t - adj)
 
 # doing this here, to note that i didn't swap before, put it in `a (mod n)` form
 # we also have to "rotate the ring", by subtracting the number of minutes from the ID
-# because being 1 minute after the timestamp is being (n - 1) minutes before the next one
+# because being 1 minute after the timestamp is being (n - 1) minutes before the next bus arrival
 buses_ts_mod = list(map(lambda v: ((v[0] - v[1]) % v[0], v[0]), buses_ts))
 
 def invmod(a, n):
