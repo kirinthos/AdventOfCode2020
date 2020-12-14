@@ -71,6 +71,11 @@ def last(l):
         pass
     return x
 
+def repeat_multiples(n):
+    while True:
+        yield n
+        n *= n
+
 def prime_factors(n):
     d = 2
     while n >= d:
