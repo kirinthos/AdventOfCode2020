@@ -52,13 +52,14 @@ def mask_pairs(mask_str):
     return [(i, c) for i, c in enumerate(reversed(mask_str))]
 
 def mask_value(mask, value):
-    values = [value]
-    for i, m in mask:
+    def inner(values, mask):
+        i, m = mask
         if m == '1':
             values = list(map(lambda v: set_bit(v, i), values))
         elif m == 'X':
             values = flatten([(set_bit(v, i), clear_bit(v, i)) for v in values])
-    return values
+        return values
+    return reduce(inner, mask, [value])
 
 def run(data):
     mem = defaultdict(lambda: 0)
