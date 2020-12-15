@@ -21,17 +21,18 @@ data = [list(map(int, l.split(','))) for l in read_input('data.input.day15')][0]
 #data = [2,3,1]
 #data = [3,1,2]
 
-d = defaultdict(lambda: [])
+d = defaultdict(lambda: 0)
 for i, v in enumerate(data[:-1]):
-    d[v] = [i + 1]
+    d[v] = i + 1
 
 def process(d, acc, n):
     vs = d[acc]
-    if len(vs) > 0:
-        v = n - 1 - vs[-1]
+    l = n - 1
+    if vs > 0:
+        v = l - vs
     else:
         v = 0
-    vs.append(n - 1)
+    d[acc] = l
     return v
 
 # yeah closures, but also FP
